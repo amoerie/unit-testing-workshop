@@ -8,6 +8,23 @@ namespace UnitTestingWorkshop.Core.Exercise02SMS
 {
     public interface IUserNamePasswordValidator
     {
-        bool TryValidate(string username, string password, out User user);
+        ValidationResult Validate(string username, string password);
+    }
+    
+    public abstract class ValidationResult {}
+
+    public class InvalidUserNamePassword : ValidationResult
+    {
+        public InvalidUserNamePassword() {}
+    }
+
+    public class ValidUserNamePassword : ValidationResult
+    {
+        public User User { get; set; }
+
+        public ValidUserNamePassword(User user)
+        {
+            User = user ?? throw new ArgumentNullException(nameof(user));
+        }
     }
 }
