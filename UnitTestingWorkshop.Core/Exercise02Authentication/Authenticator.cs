@@ -1,8 +1,10 @@
-﻿namespace UnitTestingWorkshop.Core.Exercise02SMS
+﻿using System;
+
+namespace UnitTestingWorkshop.Core.Exercise02SMS
 {
     public interface IAuthenticator
     {
-        AuthenticationResult Authenticate(string username, string password);
+        AuthenticationResult Authenticate(string userName, string password);
     }
 
     public class Authenticator : IAuthenticator
@@ -21,16 +23,23 @@
             _smsSender = smsSender;
         }
 
-        public AuthenticationResult Authenticate(string username, string password)
+        public AuthenticationResult Authenticate(string userName, string password)
         {
-            if (!_userNamePasswordValidator.TryValidate(username, password, out var user))
+            var validationResult = _userNamePasswordValidator.Validate(userName, password);
+            if(validationResult is InvalidUserNamePassword)
                 return AuthenticationResult.InvalidUsernamePassword;
 
-            var twoFactorCode = _twoFactorCodeGenerator.Generate();
+            if (validationResult is ValidUserNamePassword validUserNamePassword)
+            {
+                var user = validUserNamePassword.User;
+                var twoFactorCode = _twoFactorCodeGenerator.Generate();
 
-            _smsSender.Send(user.PhoneNumber, twoFactorCode);
+                _smsSender.Send(user.PhoneNumber, twoFactorCode);
 
-            return AuthenticationResult.TwoFactorAuthenticationViaSmsInitiated;
+                return AuthenticationResult.TwoFactorAuthenticationViaSmsInitiated;
+            }
+            
+            throw new Exception("Unknown validation result: " + validationResult.GetType());
         }
     }
 }

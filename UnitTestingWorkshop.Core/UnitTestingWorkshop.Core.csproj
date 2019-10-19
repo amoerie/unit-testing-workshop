@@ -50,6 +50,12 @@
   <ItemGroup>
     <Compile Include="Exercise01WordCombinationsFinder\WordCombination.cs" />
     <Compile Include="Exercise01WordCombinationsFinder\WordCombinationsFinder.cs" />
+    <Compile Include="Exercise02Authentication\AuthenticationResult.cs" />
+    <Compile Include="Exercise02Authentication\Authenticator.cs" />
+    <Compile Include="Exercise02Authentication\OTPGenerator.cs" />
+    <Compile Include="Exercise02Authentication\SmsSender.cs" />
+    <Compile Include="Exercise02Authentication\User.cs" />
+    <Compile Include="Exercise02Authentication\UserNamePasswordValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

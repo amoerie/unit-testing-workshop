@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System;
+using FluentAssertions;
 using UnitTestingWorkshop.Core.Exercise01WordCombinationsFinder;
 using Xunit;
 
@@ -19,7 +20,7 @@ namespace UnitTestingWorkshop.Tests.Exercise01WordCombinationsFinder
             public void ShouldReturnEmptyWhenThereAreNoWords()
             {
                 // Arrange
-                var words = new string[0];
+                var words = Array.Empty<string>();
                 var requestedLength = 6;
 
                 // Act
