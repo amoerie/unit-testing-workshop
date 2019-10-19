@@ -15,7 +15,36 @@ namespace UnitTestingWorkshop.Tests.Exercise01WordCombinationsFinder
 
         public class TestsForFindCombinations : TestsForWordCombinationsFinder
         {
-            
+            [Fact]
+            public void ShouldReturnEmptyWhenThereAreNoWords()
+            {
+                // Arrange
+
+                // Act
+
+                // Assert
+            }
+
+            [Fact]
+            public void ShouldReturnEmptyWhenThereAreNoCombinations()
+            {
+                // Arrange
+
+                // Act
+
+                // Assert
+            }
+
+
+            [Fact]
+            public void ShouldReturnTwoCombinationsWhenThereAreTwoCombinations()
+            {
+                // Arrange
+
+                // Act
+
+                // Assert
+            }
         }
     }
 }
