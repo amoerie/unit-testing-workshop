@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace UnitTestingWorkshop.Core.Exercise02SMS
+namespace UnitTestingWorkshop.Core.Exercise02Authentication
 {
     public interface IUserNamePasswordValidator
     {
