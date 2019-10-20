@@ -41,6 +41,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da">
+      <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Effort, Version=2.2.4.0, Culture=neutral, PublicKeyToken=6a46696d54971e6d">
       <HintPath>..\packages\Effort.EF6.2.2.4\lib\net45\Effort.dll</HintPath>
       <Private>True</Private>
@@ -89,10 +93,10 @@
   <ItemGroup>
     <Compile Include="Exercise01WordCombinationsFinder\TestsForWordCombinationsFinder.cs" />
     <Compile Include="Exercise02Authentication\TestsForAuthenticator.cs" />
+    <Compile Include="Exercise03Pizzas\TestDatabase\TestDatabaseModule.cs" />
+    <Compile Include="Exercise03Pizzas\TestDatabase\TestPizzaContextProvider.cs" />
+    <Compile Include="Exercise03Pizzas\TestsForPizzaRestaurant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Exercise03Pizzas" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UnitTestingWorkshop.Core\UnitTestingWorkshop.Core.csproj">

@@ -6,8 +6,7 @@ namespace UnitTestingWorkshop.Core.Exercise03Pizzas.Finding
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<IngredientFinder>().As<IIngredientFinder>().SingleInstance();
-            builder.RegisterType<PizzasByIngredientFinder>().As<IPizzasByIngredientFinder>().SingleInstance();
+            builder.RegisterType<PizzaFinder>().As<IPizzaFinder>().SingleInstance();
         }
     }
 }

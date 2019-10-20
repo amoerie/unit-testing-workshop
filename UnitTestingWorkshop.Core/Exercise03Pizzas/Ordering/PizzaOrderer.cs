@@ -26,7 +26,8 @@ namespace UnitTestingWorkshop.Core.Exercise03Pizzas.Ordering
             {
                 var order = new Order
                 {
-                    Pizzas = new List<PizzaOrder>()
+                    Pizzas = new List<PizzaOrder>(),
+                    TimeStamp = DateTimeOffset.Now
                 };
                 
                 foreach (var p in pizzas)

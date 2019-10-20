@@ -6,25 +6,25 @@ using UnitTestingWorkshop.Core.Exercise03Pizzas.Models;
 
 namespace UnitTestingWorkshop.Core.Exercise03Pizzas.Finding
 {
-    public interface IIngredientFinder
+    public interface IPizzaFinder
     {
-        IEnumerable<Ingredient> FindByName(string name);
+        IEnumerable<Pizza> FindByName(string name);
     }
 
-    public class IngredientFinder : IIngredientFinder
+    public class PizzaFinder : IPizzaFinder
     {
         private readonly IPizzaContextProvider _pizzaContextProvider;
 
-        public IngredientFinder(IPizzaContextProvider pizzaContextProvider)
+        public PizzaFinder(IPizzaContextProvider pizzaContextProvider)
         {
             _pizzaContextProvider = pizzaContextProvider ?? throw new ArgumentNullException(nameof(pizzaContextProvider));
         }
         
-        public IEnumerable<Ingredient> FindByName(string name)
+        public IEnumerable<Pizza> FindByName(string name)
         {
             using (var pizzaContext = _pizzaContextProvider.Provide())
             {
-                return pizzaContext.Ingredients.Where(i => i.Name == name).ToList();
+                return pizzaContext.Pizzas.Where(i => i.Name == name).ToList();
             }
         }
     }
