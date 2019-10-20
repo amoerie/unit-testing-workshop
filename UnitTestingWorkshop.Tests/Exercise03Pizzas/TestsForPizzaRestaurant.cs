@@ -1,40 +1,24 @@
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
-using Autofac;
-using UnitTestingWorkshop.Core.Exercise03Pizzas;
 using UnitTestingWorkshop.Core.Exercise03Pizzas.Database;
 using UnitTestingWorkshop.Core.Exercise03Pizzas.Models;
-using UnitTestingWorkshop.Tests.Exercise03Pizzas.TestDatabase;
 using Xunit;
 
 namespace UnitTestingWorkshop.Tests.Exercise03Pizzas
 {
     public class TestsForPizzaRestaurant
     {
-        private readonly IPizzaRestaurant _pizzaRestaurant;
-        private readonly IPizzaContextProvider _pizzaContextProvider;
-
         public TestsForPizzaRestaurant()
         {
-            var containerBuilder = new ContainerBuilder();
-
-            containerBuilder.RegisterModule<PizzaRestaurantModule>();
-            // This will overwrite the database registration
-            containerBuilder.RegisterModule<TestDatabaseModule>();
-
-            var container = containerBuilder.Build();
-
-            _pizzaRestaurant = container.Resolve<IPizzaRestaurant>();
-            _pizzaContextProvider = container.Resolve<IPizzaContextProvider>();
         }
 
         [Fact]
         public void ShouldBeAbleToFindAndOrderTwoPizzas()
         {
             // Arrange
-            
+
             // Act
-            
+
             // Assert
         }
 
@@ -81,10 +65,10 @@ namespace UnitTestingWorkshop.Tests.Exercise03Pizzas
                     }
                 };
 
-                var margarita = new Pizza
+                var margherita = new Pizza
                 {
                     Id = 3,
-                    Name = "Margarita",
+                    Name = "Margherita",
                     Ingredients = new List<PizzaIngredient>
                     {
                         new PizzaIngredient {Ingredient = tomatoSauce},
@@ -92,7 +76,7 @@ namespace UnitTestingWorkshop.Tests.Exercise03Pizzas
                     }
                 };
 
-                pizzaContext.Pizzas.AddOrUpdate(hawai, pepperoni, margarita);
+                pizzaContext.Pizzas.AddOrUpdate(hawai, pepperoni, margherita);
 
                 pizzaContext.SaveChanges();
             }

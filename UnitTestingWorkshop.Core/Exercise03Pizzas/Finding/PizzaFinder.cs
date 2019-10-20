@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using UnitTestingWorkshop.Core.Exercise03Pizzas.Database;
 using UnitTestingWorkshop.Core.Exercise03Pizzas.Models;
@@ -8,7 +8,7 @@ namespace UnitTestingWorkshop.Core.Exercise03Pizzas.Finding
 {
     public interface IPizzaFinder
     {
-        IEnumerable<Pizza> FindByName(string name);
+        Pizza FindByName(string name);
     }
 
     public class PizzaFinder : IPizzaFinder
@@ -20,11 +20,14 @@ namespace UnitTestingWorkshop.Core.Exercise03Pizzas.Finding
             _pizzaContextProvider = pizzaContextProvider ?? throw new ArgumentNullException(nameof(pizzaContextProvider));
         }
         
-        public IEnumerable<Pizza> FindByName(string name)
+        public Pizza FindByName(string name)
         {
             using (var pizzaContext = _pizzaContextProvider.Provide())
             {
-                return pizzaContext.Pizzas.Where(i => i.Name == name).ToList();
+                return pizzaContext.Pizzas
+                    .Include(p => p.Ingredients)
+                    .Include(p => p.Ingredients.Select(i => i.Ingredient))
+                    .SingleOrDefault(i => i.Name == name);
             }
         }
     }

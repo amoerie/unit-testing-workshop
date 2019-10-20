@@ -8,7 +8,7 @@ namespace UnitTestingWorkshop.Core.Exercise03Pizzas
 {
     public interface IPizzaRestaurant
     {
-        IEnumerable<Pizza> FindPizzaByName(string name);
+        Pizza FindPizzaByName(string name);
         Order Order(IEnumerable<Pizza> pizzas);
     }
 
@@ -23,7 +23,7 @@ namespace UnitTestingWorkshop.Core.Exercise03Pizzas
             _orderer = orderer ?? throw new ArgumentNullException(nameof(orderer));
         }
         
-        public IEnumerable<Pizza> FindPizzaByName(string name)
+        public Pizza FindPizzaByName(string name)
         {
             return _finder.FindByName(name);
         }

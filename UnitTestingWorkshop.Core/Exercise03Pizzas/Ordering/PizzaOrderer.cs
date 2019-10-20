@@ -32,7 +32,6 @@ namespace UnitTestingWorkshop.Core.Exercise03Pizzas.Ordering
                 
                 foreach (var p in pizzas)
                 {
-                    pizzaContext.Pizzas.Attach(p);
                     order.Pizzas.Add(new PizzaOrder
                     {
                         Pizza = p
