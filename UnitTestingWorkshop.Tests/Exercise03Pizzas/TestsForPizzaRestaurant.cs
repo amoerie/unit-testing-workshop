@@ -1,25 +1,51 @@
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Linq;
+using Autofac;
+using FluentAssertions;
+using UnitTestingWorkshop.Core.Exercise03Pizzas;
 using UnitTestingWorkshop.Core.Exercise03Pizzas.Database;
 using UnitTestingWorkshop.Core.Exercise03Pizzas.Models;
+using UnitTestingWorkshop.Tests.Exercise03Pizzas.TestDatabase;
 using Xunit;
 
 namespace UnitTestingWorkshop.Tests.Exercise03Pizzas
 {
     public class TestsForPizzaRestaurant
     {
+        private readonly IPizzaRestaurant _pizzaRestaurant;
+        private readonly IPizzaContextProvider _pizzaContextProvider;
+
         public TestsForPizzaRestaurant()
         {
+            var containerBuilder = new ContainerBuilder();
+
+            containerBuilder.RegisterModule<PizzaRestaurantModule>();
+            // This will overwrite the database registration
+            containerBuilder.RegisterModule(new TestDatabaseModule(Guid.NewGuid().ToString()));
+
+            var container = containerBuilder.Build();
+
+            _pizzaRestaurant = container.Resolve<IPizzaRestaurant>();
+            _pizzaContextProvider = container.Resolve<IPizzaContextProvider>();
         }
 
         [Fact]
         public void ShouldBeAbleToFindAndOrderTwoPizzas()
         {
             // Arrange
+            Seed(_pizzaContextProvider);
 
             // Act
+            var pepperoni = _pizzaRestaurant.FindPizzaByName("Pepperoni");
+            var margherita = _pizzaRestaurant.FindPizzaByName("Margherita");
+            var order = _pizzaRestaurant.Order(new[] {pepperoni, margherita});
 
             // Assert
+            order.Should().NotBeNull();
+            order.TimeStamp.Should().BeCloseTo(DateTimeOffset.Now, precision: TimeSpan.FromMinutes(1));
+            order.Pizzas.Select(p => p.Pizza).Should().BeEquivalentTo(pepperoni, margherita);
         }
 
         static void Seed(IPizzaContextProvider pizzaContextProvider)
