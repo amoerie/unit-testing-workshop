@@ -1,4 +1,4 @@
-﻿namespace UnitTestingWorkshop.Core.Exercise02SMS
+﻿namespace UnitTestingWorkshop.Core.Exercise02Authentication
 {
     public interface ISmsSender
     {
