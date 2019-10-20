@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FakeItEasy;
+﻿using FakeItEasy;
 using FluentAssertions;
-using UnitTestingWorkshop.Core.Exercise02SMS;
+using UnitTestingWorkshop.Core.Exercise02Authentication;
 using Xunit;
 
 namespace UnitTestingWorkshop.Tests.Exercise02Authentication
