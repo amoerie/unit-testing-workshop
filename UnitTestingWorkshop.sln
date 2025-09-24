@@ -1,11 +1,11 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestingWorkshop.Core", "UnitTestingWorkshop.Core\UnitTestingWorkshop.Core.csproj", "{307EA235-B676-452A-A1C0-603D07FB2261}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestingWorkshop.Core", "UnitTestingWorkshop.Core\UnitTestingWorkshop.Core.csproj", "{307EA235-B676-452A-A1C0-603D07FB2261}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestingWorkshop.Tests", "UnitTestingWorkshop.Tests\UnitTestingWorkshop.Tests.csproj", "{2CE3E6C0-CE2E-4C7F-AFF2-6A820612246C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestingWorkshop.Tests", "UnitTestingWorkshop.Tests\UnitTestingWorkshop.Tests.csproj", "{2CE3E6C0-CE2E-4C7F-AFF2-6A820612246C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
