@@ -34,7 +34,7 @@ namespace UnitTestingWorkshop.Tests.Exercise01WordCombinationsFinder
             public void ShouldReturnEmptyWhenThereAreNoCombinations()
             {
                 // Arrange
-                var words = new string[] { "pizza", "hamburgers", "fries" };
+                var words = new[] { "pizza", "hamburgers", "fries" };
                 var requestedLength = 6;
 
                 // Act
@@ -48,7 +48,7 @@ namespace UnitTestingWorkshop.Tests.Exercise01WordCombinationsFinder
             public void ShouldReturnTwoCombinationsWhenThereAreTwoCombinations()
             {
                 // Arrange
-                var words = new string[] { 
+                var words = new[] { 
                     "al", "bums", "albums",
                     "tail", "or", "tailor"
                 };
